@@ -1,7 +1,8 @@
 const workPreview = require("./work-preview.js"),
     { getLinkPreview } = require("link-preview-js"),
     yaml = require("js-yaml"),
-    widont = require("widont")
+    widont = require("widont"),
+    minifier = require("@sherby/eleventy-plugin-files-minifier")
 
 module.exports = eleventyConfig => {
     workPreview.init({
@@ -25,6 +26,7 @@ module.exports = eleventyConfig => {
     eleventyConfig.addFilter("widont", widont)
 
     eleventyConfig.addDataExtension("yaml", contents => yaml.safeLoad(contents))
+    eleventyConfig.addPlugin(minifier)
 
     eleventyConfig.addPassthroughCopy("works/*")
     eleventyConfig.addPassthroughCopy("assets/**")

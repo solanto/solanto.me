@@ -12,7 +12,7 @@
     "serve:11ty": "npx @11ty/eleventy --serve",
     "watch:sass": "sass --watch styles:_site/styles",
     "build:11ty": "npx @11ty/eleventy",
-    "build:sass": "sass styles:_site/styles --no-source-map",
+    "build:sass": "sass styles:_site/styles --no-source-map --style compressed",
     "build:sass-mapped": "sass styles:_site/styles"
   },
   "keywords": [],
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-img": "^0.9.0",
+    "@sherby/eleventy-plugin-files-minifier": "^1.1.1",
     "del-cli": "^3.0.1",
     "http-server": "^0.12.3",
     "link-preview-js": "^2.1.6",
