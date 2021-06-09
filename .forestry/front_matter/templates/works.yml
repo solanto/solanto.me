@@ -3,8 +3,8 @@ label: works
 hide_body: true
 fields:
 - type: field_group_list
-  name: Works
-  label: Works
+  name: works
+  label: works
   fields:
   - type: text
     name: title
@@ -22,8 +22,19 @@ fields:
     - type: text
       name: label
       label: label
-    - type: text
-      name: location
+    - name: location
+      type: select
+      default: []
+      config:
+        required: false
+        options:
+        - external
+        - works
+        source:
+          type: simple
+          section: works
+          file: 
+          path: 
       label: location
     - type: text
       name: target
@@ -35,8 +46,20 @@ fields:
     - type: text
       name: alt
       label: alt
-    - type: text
-      name: location
+    - name: location
+      type: select
+      default: []
+      config:
+        required: false
+        options:
+        - external
+        - works
+        - previews
+        source:
+          type: simple
+          section: 
+          file: 
+          path: 
       label: location
     - type: text
       name: source
