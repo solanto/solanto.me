@@ -20,15 +20,21 @@
     font-style: italic;
 }
 
-$rainbow-lighten: 5%;
-$rainbow: linear-gradient(
-    to right,
-    lighten(#b827fc, $rainbow-lighten) 0%,
-    lighten(#2c90fc, $rainbow-lighten) 25%,
-    lighten(#b8fd33, $rainbow-lighten) 50%,
-    lighten(#fec837, $rainbow-lighten) 75%,
-    lighten(#fd1892, $rainbow-lighten) 100%
-);
+@mixin rainbow($property, $function, $change) {
+    #{$property}: linear-gradient(
+        to right,
+        #{call(get-function($function), #b827fc, $change)} 0%,
+        #{call(get-function($function), #2c90fc, $change)} 25%,
+        #{call(get-function($function), #b8fd33, $change)} 50%,
+        #{call(get-function($function), #fec837, $change)} 75%,
+        #{call(get-function($function), #fd1892, $change)} 100%
+    );
+}
+
+:root {
+    @include rainbow(--rainbow, lighten, 5%);
+    @include rainbow(--rainbow-darker, darken, 5%);
+}
 
 // * { outline: red solid 1px !important }
 
@@ -57,7 +63,7 @@ h6 {
     margin: 0;
     width: 100%;
     border: none;
-    background: $rainbow;
+    background: var(--rainbow);
 }
 
 .work {
@@ -109,6 +115,46 @@ h6 {
             font-size: 1.8rem;
             margin-top: 0.8em;
             font-variation-settings: "wght" 300;
+        }
+
+        .work-links {
+            a {
+                padding-bottom: 4px;
+                position: relative;
+                text-decoration: none;
+                text-shadow: 0 -0.02em 0 white, 0 -0.04em 0 white, 0 -0.06em 0 white, 0 -0.08em 0 white,
+                    0 -0.1em 0 white, 0 -0.12em 0 white, 0 -0.14em 0 white, 0 -0.16em 0 white, 0 -0.18em 0 white,
+                    0 -0.2em 0 white, 0.02em 0 0 white, 0.04em 0 0 white, 0.06em 0 0 white, 0.08em 0 0 white,
+                    0.1em 0 0 white, -0.02em 0 0 white, -0.04em 0 0 white, -0.06em 0 0 white, -0.08em 0 0 white,
+                    -0.1em 0 0 white;
+                color: inherit;
+                margin-right: 0.8em;
+                display: inline-block;
+
+                &::before {
+                    background: black;
+                    background: var(--rainbow-darker);
+                    content: "";
+                    position: absolute;
+                    top: 1em;
+                    left: 0;
+                    height: 0.1em;
+                    width: 100%;
+                    z-index: -1;
+                }
+
+                &::after {
+                    content: "";
+                    width: 0.8em;
+                    height: 0.8em;
+                    display: inline-block;
+                    margin-left: 0.3em;
+                    background: url("/assets/icons/link-out.svg");
+                    background-size: contain;
+                    position: relative;
+                    bottom: -0.05em;
+                }
+            }
         }
     }
 
