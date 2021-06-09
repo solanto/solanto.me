@@ -1,0 +1,43 @@
+---
+label: works
+hide_body: true
+fields:
+- type: field_group_list
+  name: Works
+  label: Works
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: type
+    label: type
+  - type: textarea
+    name: description
+    label: description
+  - type: field_group_list
+    name: links
+    label: links
+    fields:
+    - type: text
+      name: label
+      label: label
+    - type: text
+      name: location
+      label: location
+    - type: text
+      name: target
+      label: target
+  - type: field_group
+    name: preview
+    label: preview
+    fields:
+    - type: text
+      name: alt
+      label: alt
+    - type: text
+      name: location
+      label: location
+    - type: text
+      name: source
+      label: source
