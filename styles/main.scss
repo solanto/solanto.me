@@ -1,0 +1,170 @@
+@use "sass:math";
+
+@font-face {
+    font-family: "League Spartan";
+    src: url("/assets/fonts/LeagueSpartan-VF/LeagueSpartan-VF.woff2") format("woff2"),
+        url("/assets/fonts/LeagueSpartan-VF/LeagueSpartan-VF.woff") format("woff"),
+        url("/assets/fonts/LeagueSpartan-VF/LeagueSpartan-VF.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("/assets/fonts/IBMPlexSansVar/IBMPlexSansVar-Roman.woff2") format("woff"),
+        url("/assets/fonts/IBMPlexSansVar/IBMPlexSansVar-Roman.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("/assets/fonts/IBMPlexSansVar/IBMPlexSansVar-Italic.woff2") format("woff"),
+        url("/assets/fonts/IBMPlexSansVar/IBMPlexSansVar-Italic.ttf") format("truetype");
+    font-style: italic;
+}
+
+$rainbow-lighten: 5%;
+$rainbow: linear-gradient(
+    to right,
+    lighten(#b827fc, $rainbow-lighten) 0%,
+    lighten(#2c90fc, $rainbow-lighten) 25%,
+    lighten(#b8fd33, $rainbow-lighten) 50%,
+    lighten(#fec837, $rainbow-lighten) 75%,
+    lighten(#fd1892, $rainbow-lighten) 100%
+);
+
+// * { outline: red solid 1px !important }
+
+$min-margins: 1.2rem;
+
+body {
+    margin: clamp(#{$min-margins}, 3vh, 4rem) auto;
+    max-width: 70rem;
+    font-size: 1rem;
+    font-family: IBM Plex Sans;
+    -webkit-text-size-adjust: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: League Spartan;
+    margin: 0;
+}
+
+.works-separator {
+    height: 0.4rem;
+    margin: 0;
+    width: 100%;
+    border: none;
+    background: $rainbow;
+}
+
+.work {
+    display: flex;
+    flex-direction: column;
+
+    &-preview {
+        align-items: center;
+        margin: 0 2.5rem;
+        background-color: black;
+        padding: 1.8rem 0;
+
+        picture {
+            img {
+                height: auto;
+                max-height: 18rem;
+                width: auto;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &-info {
+        flex-direction: column;
+        margin: 0 2rem;
+
+        --section-top-bottom-baseline: clamp(#{$min-margins}, 4vh, 2.5rem);
+        padding: var(--section-top-bottom-baseline) 0 calc(var(--section-top-bottom-baseline) * 2) 0;
+
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .work-links {
+            $margin: clamp(#{$min-margins}, 4vw, 2.5rem);
+            margin-right: $margin;
+            margin-left: $margin;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-variation-settings: "wght" 500;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 0.8em;
+            font-variation-settings: "wght" 300;
+        }
+    }
+
+    &-preview,
+    &-info {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@supports not (font-variation-settings: "wght" 500) {
+    .work {
+        &-info {
+            h2 {
+                font-weight: 700;
+            }
+
+            h3 {
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    body {
+        background: linear-gradient(90deg, black 50%, white 50%);
+    }
+
+    .works-separator {
+        width: clamp(3rem, 4vw, 5rem);
+        margin: 0 auto;
+    }
+
+    .work {
+        flex-direction: row;
+        margin: 2rem;
+
+        &-preview,
+        &-info {
+            width: 50%;
+        }
+
+        $half-middle-margin: clamp(#{math.div($min-margins, 2)}, 3vw, 4rem);
+
+        &-preview {
+            margin-right: $half-middle-margin;
+            background-color: initial;
+            padding: 0;
+        }
+
+        &-info {
+            margin-left: $half-middle-margin;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/styles/main.css">
+
+<section id="works">
+    {% for work in works %}
+
+    <hr class="works-separator">
+    <section class="work">
+        <section class="work-preview">
+            {% assign src = work.preview.source | prefix_location: work.preview.location %}
+            {% work_preview src work.preview.alt %}
+        </section>
+        <section class="work-info">
+            <h2>{{ work.title | widont }}</h2>
+            <h3>{{ work.type | widont }}</h3>
+            <p>{{ work.description | widont }}</p>
+            <section class="work-links">
+                {% for link in work.links %}
+
+                <a href="{{ link.target | prefix_location: link.location }}"
+                   target="_blank">{{ link.label | widont }}</a>
+
+                {% endfor %}
+            </section>
+        </section>
+    </section>
+    {% endfor %}
+</section>

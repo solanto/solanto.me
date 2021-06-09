@@ -1,0 +1,27 @@
+- title: Visibility on-the-go
+  type: microcontroller prototype + paper
+  description:
+    A device that maps the environment and displays it on an 8 by 8 dot grid display using an Arduino, a cheap ultrasonic sensor, and a servo. I wrote a full paper with problem background, systems documentation (including custom diagrams), and pictures of my prototype.
+  links:
+    - label: full paper
+      location: external
+      target: https://docs.google.com/document/d/1h26WxozLwDxCvQk0HH0gCvA0ckOZmEKNL86gxf7ZDMk/edit
+    - label: github repository
+      location: external
+      target: https://github.com/solanto/ultrasonic-scanner
+  preview:
+    alt: full paper
+    location: external
+    source: https://docs.google.com/document/d/1h26WxozLwDxCvQk0HH0gCvA0ckOZmEKNL86gxf7ZDMk/edit
+
+- title: "Stockholm: side by side with nature"
+  type: gis application
+  description: A visual comparison of the distribution of lush green space versus population in Stockholm, Sweden.
+  links:
+    - label: map layout
+      location: works
+      target: natur.svg
+  preview:
+    alt: map layout
+    location: works
+    source: natur.svg

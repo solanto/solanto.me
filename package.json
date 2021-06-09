@@ -1,0 +1,31 @@
+{
+  "name": "solanto.me-remade",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "del-cli _site/ .cache/",
+    "build": "run-s build:sass build:11ty",
+    "serve": "run-p watch:sass serve:11ty",
+    "serve:http": "http-server _site",
+    "serve:11ty": "npx @11ty/eleventy --serve",
+    "watch:sass": "sass --watch styles:_site/styles",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:sass": "sass styles:_site/styles --no-source-map",
+    "build:sass-mapped": "sass styles:_site/styles"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-img": "^0.9.0",
+    "del-cli": "^3.0.1",
+    "http-server": "^0.12.3",
+    "link-preview-js": "^2.1.6",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.34.1",
+    "widont": "^0.3.3"
+  }
+}
