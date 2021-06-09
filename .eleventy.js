@@ -5,7 +5,7 @@ const workPreview = require("./work-preview.js"),
 
 module.exports = eleventyConfig => {
     workPreview.init({
-        width: 1000,
+        width: 700,
         outputDir: "works/previews/",
         locationPrefixes: {
             "works": "works/",
