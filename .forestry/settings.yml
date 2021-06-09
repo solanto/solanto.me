@@ -8,7 +8,7 @@ sections:
   path: works
   label: works media
   create: all
-  match: "**/*"
+  match: "**/"
 - type: document
   path: _data/works.yaml
   label: works
