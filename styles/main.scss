@@ -210,12 +210,6 @@ h6 {
                     margin-top: 0.1em;
                 }
 
-                &:hover {
-                    &::before {
-                        animation: rainbow-march 0.7s infinite forwards linear;
-                    }
-                }
-
                 &::after {
                     // link icon
                     content: "";
@@ -285,6 +279,10 @@ h6 {
 
         &-info {
             margin-left: $half-middle-margin;
+
+            .work-links a:hover::before {
+                animation: rainbow-march 0.7s infinite forwards linear;
+            }
         }
     }
 }
