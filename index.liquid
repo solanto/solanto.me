@@ -9,7 +9,7 @@
     <section class="work">
         <section class="work-preview">
             {% assign src = work.preview.source | prefix_location: work.preview.location %}
-            {% work_preview src work.preview.alt %}
+            {% work_preview src work.preview.alt work.links work.preview.link %}
         </section>
         <section class="work-info">
             <h2>{{ work.title | widont }}</h2>

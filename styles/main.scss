@@ -127,12 +127,16 @@ h6 {
         background-color: black;
         padding: 1.8rem 0;
 
-        picture {
-            img {
-                height: auto;
-                max-height: 18rem;
-                width: auto;
-                max-width: 100%;
+        a {
+            margin: $min-margins;
+
+            picture {
+                img {
+                    height: auto;
+                    max-height: 18rem;
+                    width: auto;
+                    max-width: 100%;
+                }
             }
         }
     }
@@ -157,7 +161,8 @@ h6 {
             margin-left: $margin;
         }
 
-        h2, h3 {
+        h2,
+        h3 {
             line-height: 1;
         }
 
@@ -190,7 +195,8 @@ h6 {
                     $background-color: white
                 );
 
-                &::before { // underline
+                &::before {
+                    // underline
                     background: black;
                     background: var(--rainbow-underline);
                     background-size: 125%;
@@ -210,7 +216,8 @@ h6 {
                     }
                 }
 
-                &::after { // link icon
+                &::after {
+                    // link icon
                     content: "";
                     width: 0.8em;
                     height: 0.8em;

@@ -13,6 +13,7 @@
     alt: full paper
     location: external
     source: https://docs.google.com/document/d/1h26WxozLwDxCvQk0HH0gCvA0ckOZmEKNL86gxf7ZDMk/edit
+    link: full paper
 
 - title: "Stockholm: side by side with nature"
   type: gis application
@@ -25,3 +26,4 @@
     alt: map layout
     location: works
     source: natur.svg
+    link: map layout

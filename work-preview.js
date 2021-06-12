@@ -8,7 +8,7 @@ function init(optionsObject) {
     options = optionsObject
 }
 
-async function image(src, alt) {
+async function image(src, alt, linkUrl) {
     const metadata = await eleventyImg(src, {
         widths: [options.width],
         outputDir: "_site/" + options.outputDir,
@@ -22,11 +22,13 @@ async function image(src, alt) {
         }
     })
 
-    return eleventyImg.generateHTML(metadata, {
+    const pictureElement = eleventyImg.generateHTML(metadata, {
         alt: alt,
         loading: "lazy",
         decoding: "async"
     })
+
+    return /*html*/ `<a href="${linkUrl}">${pictureElement}</a>`
 }
 
 let handlers = []
@@ -84,21 +86,6 @@ const webpageHandler = new Handler(
     "webpage"
 )
 
-async function preview(src, alt) {
-    for (handler of handlers) {
-        if (handler.test(src)) {
-            return await image(await handler.imageProvider(src), alt)
-        }
-    }
-
-    if (webpageHandler.test(src)) {
-        return await image(await webpageHandler.imageProvider(src), alt)
-    }
-
-    alertPass(src, "image")
-    return await image(src, alt)
-}
-
 function prefixLocation(location, prefix) {
     if (prefix == "external") return location
 
@@ -108,6 +95,24 @@ function prefixLocation(location, prefix) {
     } else {
         throw new Error(`${prefix} is not a registered location prefix!`)
     }
+}
+
+async function preview(src, alt, links, linkLabel) {
+    const link = links.find(linkObject => linkObject.label == linkLabel)
+    const linkUrl = prefixLocation(link.target, link.location)
+
+    for (handler of handlers) {
+        if (handler.test(src)) {
+            return await image(await handler.imageProvider(src), alt, linkUrl)
+        }
+    }
+
+    if (webpageHandler.test(src)) {
+        return await image(await webpageHandler.imageProvider(src), alt, linkUrl)
+    }
+
+    alertPass(src, "image")
+    return await image(src, alt, linkUrl)
 }
 
 module.exports = preview
