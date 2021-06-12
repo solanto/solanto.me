@@ -39,6 +39,9 @@
     - label: full paper
       location: external
       target: https://docs.google.com/document/d/1pwS1E4ZiYzJA7Pd5E1DtLNSl89SXIe1qgZI_6nG-w3s/edit?usp=sharing
+    - label: slide deck
+      location: external
+      target: https://docs.google.com/presentation/d/e/2PACX-1vSgVZoRK3WZxLHkIPz5bmFOQY3IrahXOeB2Mvv2pXgBSOF9hyaZ3mvzB9LXE2hRYN9SkOa1vOMVqTK8/pub
     - label: cad model
       location: external
       target: https://app.sketchup.com/viewer/3dw?WarehouseModelId=19ecde82-03c0-497e-939e-63efa1189d35
