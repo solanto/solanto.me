@@ -20,15 +20,45 @@
     font-style: italic;
 }
 
-@mixin rainbow($property, $function, $change) {
-    #{$property}: linear-gradient(
-        to right,
-        #{call(get-function($function), #b827fc, $change)} 0%,
-        #{call(get-function($function), #2c90fc, $change)} 25%,
-        #{call(get-function($function), #b8fd33, $change)} 50%,
-        #{call(get-function($function), #fec837, $change)} 75%,
-        #{call(get-function($function), #fd1892, $change)} 100%
-    );
+@mixin rainbow($property, $function, $change, $repeatable: false) {
+    $stops: 4;
+
+    @if $repeatable {
+        $stops: 5;
+    }
+
+    $base-stops: (#b827fc, #2c90fc, #b8fd33, #fec837, #fd1892);
+
+    $step-size: math.div(100%, $stops);
+    $generated: ();
+
+    @for $step from 0 to length($base-stops) {
+        $generated: append(
+            $generated,
+            #{call(get-function($function), nth($base-stops, $step + 1), $change)} $step * $step-size,
+            $separator: comma
+        );
+    }
+
+    @if $repeatable {
+        $generated: append(
+            $generated,
+            #{call(get-function($function), nth($base-stops, 1), $change)} 100%,
+            $separator: comma
+        );
+    }
+
+    #{$property}: linear-gradient(to right, $generated);
+}
+
+@keyframes rainbow-march {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: -500%;
+    }
 }
 
 @mixin descender-gaps($step-size, $gap-size, $underline-thickness, $background-color) {
@@ -46,7 +76,7 @@
 
     @for $y-step from 1 through math.ceil(math.div($y-reach, $step-size)) {
         $y-offset: $y-step * $step-size;
-        $shadows: append($shadows, 0 #{-$y-offset} 0 #{$background-color}, $separator: comma)
+        $shadows: append($shadows, 0 #{-$y-offset} 0 #{$background-color}, $separator: comma);
     }
 
     text-shadow: $shadows;
@@ -54,7 +84,7 @@
 
 :root {
     @include rainbow(--rainbow, lighten, 5%);
-    @include rainbow(--rainbow-darker, darken, 5%);
+    @include rainbow(--rainbow-underline, darken, 5%, true);
 }
 
 // * { outline: red solid 1px !important }
@@ -138,7 +168,7 @@ h6 {
 
         h3 {
             font-size: 1.8rem;
-            margin-top: 0.8em;
+            margin-bottom: 0.8em;
             font-variation-settings: "wght" 300;
         }
 
@@ -160,9 +190,10 @@ h6 {
                     $background-color: white
                 );
 
-                &::before {
+                &::before { // underline
                     background: black;
-                    background: var(--rainbow-darker);
+                    background: var(--rainbow-underline);
+                    background-size: 125%;
                     content: "";
                     position: absolute;
                     top: 1em;
@@ -173,7 +204,13 @@ h6 {
                     margin-top: 0.1em;
                 }
 
-                &::after {
+                &:hover {
+                    &::before {
+                        animation: rainbow-march 0.7s infinite forwards linear;
+                    }
+                }
+
+                &::after { // link icon
                     content: "";
                     width: 0.8em;
                     height: 0.8em;
