@@ -8,7 +8,7 @@ function init(optionsObject) {
     options = optionsObject
 }
 
-async function image(src, alt, linkUrl) {
+async function image(src, alt, linkUrl, className) {
     const metadata = await eleventyImg(src, {
         widths: [options.width],
         outputDir: "_site/" + options.outputDir,
@@ -28,7 +28,12 @@ async function image(src, alt, linkUrl) {
         decoding: "async"
     })
 
-    return /*html*/ `<a href="${linkUrl}">${pictureElement}</a>`
+    return /*html*/ `
+        <a href="${linkUrl}"
+           ${className ? 'class="' + className + '"' : ""}>
+           ${pictureElement}
+        </a>
+    `
 }
 
 let handlers = []
@@ -97,22 +102,24 @@ function prefixLocation(location, prefix) {
     }
 }
 
-async function preview(src, alt, links, linkLabel) {
+async function preview(src, alt, links, linkLabel, className) {
     const link = links.find(linkObject => linkObject.label == linkLabel)
     const linkUrl = prefixLocation(link.target, link.location)
 
+    const render = async imageSrc => await image(imageSrc, alt, linkUrl, className) 
+
     for (handler of handlers) {
         if (handler.test(src)) {
-            return await image(await handler.imageProvider(src), alt, linkUrl)
+            return await render(await handler.imageProvider(src))
         }
     }
 
     if (webpageHandler.test(src)) {
-        return await image(await webpageHandler.imageProvider(src), alt, linkUrl)
+        return await render(await webpageHandler.imageProvider(src))
     }
 
     alertPass(src, "image")
-    return await image(src, alt, linkUrl)
+    return await render(src)
 }
 
 module.exports = preview
