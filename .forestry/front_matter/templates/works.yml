@@ -64,3 +64,15 @@ fields:
     - type: text
       name: source
       label: source
+    - name: link
+      type: select
+      default: []
+      config:
+        required: false
+        options: []
+        source:
+          type: documents
+          section: works-8ed00d29-3e4c-460e-a074-e4212eb1d6cf
+          file: _data/works.yaml
+          path: 
+      label: link
