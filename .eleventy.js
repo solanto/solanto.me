@@ -2,6 +2,7 @@ const workPreview = require("./work-preview.js"),
     { getLinkPreview } = require("link-preview-js"),
     yaml = require("js-yaml"),
     widont = require("widont"),
+    smartypants = require("smartypants").default,
     minifier = require("@sherby/eleventy-plugin-files-minifier")
 
 module.exports = eleventyConfig => {
@@ -23,7 +24,7 @@ module.exports = eleventyConfig => {
     eleventyConfig.addShortcode("work_preview", workPreview)
     eleventyConfig.addFilter("prefix_location", workPreview.prefixLocation)
 
-    eleventyConfig.addFilter("widont", widont)
+    eleventyConfig.addFilter("typography", text => smartypants(widont(text)))
 
     eleventyConfig.addDataExtension("yaml", contents => yaml.safeLoad(contents))
     eleventyConfig.addPlugin(minifier)

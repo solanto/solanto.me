@@ -12,14 +12,14 @@
             {% work_preview src work.preview.alt work.links work.preview.link %}
         </section>
         <section class="work-info">
-            <h2>{{ work.title | widont }}</h2>
-            <h3>{{ work.type | widont }}</h3>
-            <p>{{ work.description | widont }}</p>
+            <h2>{{ work.title | typography }}</h2>
+            <h3>{{ work.type | typography }}</h3>
+            <p>{{ work.description | typography }}</p>
             <section class="work-links">
                 {% for link in work.links %}
 
                 <a href="{{ link.target | prefix_location: link.location }}"
-                   target="_blank">{{ link.label | widont }}</a>
+                   target="_blank">{{ link.label | typography }}</a>
 
                 {% endfor %}
             </section>
