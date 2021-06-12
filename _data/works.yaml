@@ -1,27 +1,39 @@
+---
+- title: A lusher green for Recreation Park
+  type: CAD design + paper
+  description: ''
+  links: ''
+  preview:
+    alt: garden 3D CAD model
+    location: previews
+    source: garden.png
+    link: ''
 - title: Visibility on-the-go
   type: microcontroller prototype + paper
-  description:
-    A device that maps the environment and displays it on an 8 by 8 dot grid display using an Arduino, a cheap ultrasonic sensor, and a servo. I wrote a full paper with problem background, systems documentation (including custom diagrams), and pictures of my prototype.
+  description: A device that maps the environment and displays it on an 8 by 8 dot
+    grid display using an Arduino, a cheap ultrasonic sensor, and a servo. I wrote
+    a full paper with problem background, systems documentation (including custom
+    diagrams), and pictures of my prototype.
   links:
-    - label: full paper
-      location: external
-      target: https://docs.google.com/document/d/1h26WxozLwDxCvQk0HH0gCvA0ckOZmEKNL86gxf7ZDMk/edit
-    - label: github repository
-      location: external
-      target: https://github.com/solanto/ultrasonic-scanner
+  - label: full paper
+    location: external
+    target: https://docs.google.com/document/d/1h26WxozLwDxCvQk0HH0gCvA0ckOZmEKNL86gxf7ZDMk/edit
+  - label: github repository
+    location: external
+    target: https://github.com/solanto/ultrasonic-scanner
   preview:
     alt: full paper
     location: external
     source: https://docs.google.com/document/d/1h26WxozLwDxCvQk0HH0gCvA0ckOZmEKNL86gxf7ZDMk/edit
     link: full paper
-
-- title: "Stockholm: side by side with nature"
+- title: 'Stockholm: side by side with nature'
   type: gis application
-  description: A visual comparison of the distribution of lush green space versus population in Stockholm, Sweden.
+  description: A visual comparison of the distribution of lush green space versus
+    population in Stockholm, Sweden.
   links:
-    - label: map layout
-      location: works
-      target: natur.svg
+  - label: map layout
+    location: works
+    target: natur.svg
   preview:
     alt: map layout
     location: works
