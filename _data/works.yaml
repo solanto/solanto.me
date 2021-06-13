@@ -64,7 +64,7 @@
       location: external
       target: /
   preview:
-    alt: solanto.me website screenshot
+    alt: solanto.me website home
     location: previews
     source: portfolio.png
     link: website home
