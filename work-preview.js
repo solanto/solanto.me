@@ -36,7 +36,7 @@ async function image(src, alt, linkUrl, className) {
     `
 }
 
-let handlers = []
+const handlers = []
 
 class Handler {
     constructor(test, imageProvider, label) {
