@@ -31,4 +31,12 @@ module.exports = eleventyConfig => {
 
     eleventyConfig.addPassthroughCopy("works/*")
     eleventyConfig.addPassthroughCopy("assets/**")
+
+    return {
+        dir: {
+            data: "data",
+            layouts: "layouts",
+            includes: "includes"
+        }
+    }
 }
