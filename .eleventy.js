@@ -37,8 +37,8 @@ module.exports = eleventyConfig => {
     return {
         dir: {
             data: "data",
-            layouts: "layouts",
-            includes: "includes"
+            includes: "includes",
+            layouts: "layouts"
         }
     }
 }
