@@ -15,10 +15,12 @@ module.exports = eleventyConfig => {
         }
     })
 
-    workPreview.addDomainHandler(["docs.google.com", "slides.google.com"], async src =>
-        (await getLinkPreview(src))
-            .images[0]
-            .replace(/=.*$/, "")
+    workPreview.addDomainHandler(
+        ["docs.google.com", "slides.google.com"],
+        async src =>
+            (await getLinkPreview(src))
+                .images[0]
+                .replace(/=.*$/, "")
     )
 
     eleventyConfig.addShortcode("work_preview", workPreview)
