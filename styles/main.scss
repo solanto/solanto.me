@@ -167,7 +167,7 @@ h6 {
         }
 
         h2,
-        h3 {
+        h4 {
             line-height: 1;
         }
 
@@ -176,7 +176,12 @@ h6 {
             font-variation-settings: "wght" 500;
         }
 
-        h3 {
+        h4,
+        .work-links {
+            text-transform: lowercase;
+        }
+
+        h4 {
             font-size: 1.8rem;
             margin-bottom: 0.8em;
             font-variation-settings: "wght" 300;
@@ -185,49 +190,57 @@ h6 {
         .work-links {
             margin-top: 1em;
 
-            a {
-                $underline-thickness: 0.15em;
+            ul {
+                padding: 0;
 
-                padding-bottom: 4px;
-                position: relative;
-                text-decoration: none;
-                color: inherit;
-                margin-right: 0.8em;
-                display: inline-block;
-
-                @include descender-gaps(
-                    $step-size: 0.03em,
-                    $gap-size: 0.23em,
-                    $underline-thickness: $underline-thickness,
-                    $background-color: white
-                );
-
-                &::before {
-                    // underline
-                    background: black;
-                    background: var(--rainbow-underline);
-                    background-size: 125%;
-                    content: "";
-                    position: absolute;
-                    top: 1em;
-                    left: 0;
-                    height: $underline-thickness;
-                    width: 100%;
-                    z-index: -1;
-                    margin-top: 0.1em;
-                }
-
-                &::after {
-                    // link icon
-                    content: "";
-                    width: 0.8em;
-                    height: 0.8em;
+                li {
                     display: inline-block;
-                    margin-left: 0.3em;
-                    background: url("/assets/icons/link-out.svg");
-                    background-size: contain;
-                    position: relative;
-                    bottom: -0.05em;
+
+                    a {
+                        $underline-thickness: 0.15em;
+
+                        padding-bottom: 4px;
+                        position: relative;
+                        text-decoration: none;
+                        color: inherit;
+                        margin-right: 0.8em;
+                        display: inline-block;
+
+                        @include descender-gaps(
+                            $step-size: 0.03em,
+                            $gap-size: 0.23em,
+                            $underline-thickness: $underline-thickness,
+                            $background-color: white
+                        );
+
+                        &::before {
+                            // underline
+                            background: black;
+                            background: var(--rainbow-underline);
+                            background-size: 125%;
+                            content: "";
+                            position: absolute;
+                            top: 1em;
+                            left: 0;
+                            height: $underline-thickness;
+                            width: 100%;
+                            z-index: -1;
+                            margin-top: 0.1em;
+                        }
+
+                        &::after {
+                            // link icon
+                            content: "";
+                            width: 0.8em;
+                            height: 0.8em;
+                            display: inline-block;
+                            margin-left: 0.3em;
+                            background: url("/assets/icons/link-out.svg");
+                            background-size: contain;
+                            position: relative;
+                            bottom: -0.05em;
+                        }
+                    }
                 }
             }
         }
@@ -240,6 +253,27 @@ h6 {
         justify-content: center;
         margin-right: 0;
         margin-left: 0;
+    }
+
+    .clarifier {
+        border: 0;
+        clip-path: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+
+        // &:active,
+        // &:focus {
+        //     clip-path: auto;
+        //     height: auto;
+        //     margin: 0;
+        //     overflow: visible;
+        //     position: static;
+        //     width: auto;
+        // }
     }
 }
 

@@ -7,29 +7,39 @@ layout: default
         <section class="work-preview"></section>
         <section class="work-info">{{ content }}</section>
     </section>
-</section>
-<section id="works">
+</header>
+<article id="works">
     {% for work in works %}
 
-    <hr class="works-separator">
+    <hr class="works-separator" aria-hidden="true">
     <section class="work">
+        <h3 class="clarifier">featured work #{{ forloop.index }}</h3>
         <section class="work-preview">
             {% assign src = work.preview.source | prefix_location: work.preview.location %}
             {% work_preview src work.preview.alt work.links work.preview.link work.preview.class %}
         </section>
         <section class="work-info">
-            <h2>{{ work.title | typography }}</h2>
-            <h3>{{ work.type | typography }}</h3>
+            <hgroup>
+                <h2>{{ work.title | typography }}</h2>
+                <h4>{{ work.type | typography }}</h4>
+            </hgroup>
             <p>{{ work.description | typography }}</p>
             <section class="work-links">
-                {% for link in work.links %}
+                <h5 class="clarifier">links for this work</h5>
+                <ul>
+                    {% for link in work.links %}
 
-                <a href="{{ link.target | prefix_location: link.location }}"
-                   target="_blank">{{ link.label | typography }}</a>
+                    <li>
+                        <a href="{{ link.target | prefix_location: link.location }}" target="_blank">
+                            {{ link.label | typography }}
+                        </a>
+                    </li>
 
-                {% endfor %}
+                    {% endfor %}
+                </ul>
             </section>
         </section>
     </section>
+
     {% endfor %}
-</section>
+</article>

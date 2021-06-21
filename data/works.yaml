@@ -17,7 +17,7 @@
 
 
 - title: "Stockholm: side by side with nature"
-  type: gis application
+  type: GIS application
   description:
     A visual comparison of the distribution of lush green space versus population in Stockholm, Sweden. I combined datasets from multiple data sources across the Swedish government's repositories, symbolized them, and presented them using ArcGIS Pro.
   links:
@@ -32,7 +32,7 @@
 
 
 - title: A lusher green for Recreation Park
-  type: cad design + paper
+  type: CAD design + paper
   description:
     A reimagining of my hometown's fading community garden, stressing human-centered design principles. I conducted research, interviewed users and experts, and created an original design. I modeled my design in SketchUp and wrote a paper detailing my design process from beginning to end.
   links:
@@ -42,14 +42,14 @@
     - label: slide deck
       location: external
       target: https://docs.google.com/presentation/d/e/2PACX-1vSgVZoRK3WZxLHkIPz5bmFOQY3IrahXOeB2Mvv2pXgBSOF9hyaZ3mvzB9LXE2hRYN9SkOa1vOMVqTK8/pub
-    - label: cad model
+    - label: CAD model
       location: external
       target: https://app.sketchup.com/viewer/3dw?WarehouseModelId=19ecde82-03c0-497e-939e-63efa1189d35
   preview:
     alt: garden 3D CAD model
     location: previews
     source: garden.png
-    link: cad model
+    link: CAD model
 
 
 - title: solanto.me
